@@ -28,11 +28,15 @@ latitudes = [63.748023986816406, 62.90789794921875, 60.511383056640625, 60.44499
 
 # Create a list of coordinate pairs
 # YOUR CODE HERE 1 
-coordpairs=None
+# 분리된어 있는 x,y 좌표를 하나로 만들기.
+coordpairs = [i for i in zip(longitudes, latitudes)]
+
+
 
 # Create a shapely Polygon using the 'coordpairs' -list
 # YOUR CODE HERE 2 
 poly = None
+poly = Polygon(coordpairs)
 
 # CODE FOR TESTING YOUR SOLUTION
 
