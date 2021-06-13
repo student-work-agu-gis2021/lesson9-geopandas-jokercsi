@@ -14,14 +14,14 @@ from pyproj import CRS
 fp = "Kruger_posts.shp"
 data = gpd.read_file(fp)
 
-#Reproject the data from WGS84 projection into EPSG:32735 -projection which stands for UTM Zone 35S (UTM zone for South Africa) to transform the data into metric system.
-data = data.to_crs(epsg=32735)
-
 
 # - Check the crs of the input data. If this information is missing, set it as epsg:4326 (WGS84).
 # - Reproject the data from WGS84 to `EPSG:32735` -projection which stands for UTM Zone 35S (UTM zone for South Africa) to transform the data into metric system. (don't create a new variable, update the existing variable `data`!)"
 
 # YOUR CODE HERE 2 to set crs
+
+#Reproject the data from WGS84 projection into EPSG:32735 -projection which stands for UTM Zone 35S (UTM zone for South Africa) to transform the data into metric system.
+data = data.to_crs(epsg=32735)
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -37,7 +37,9 @@ print(data.crs)
 #  - Group the data by userid
 
 #  YOUR CODE HERE 3 to group 
-grouped=None
+
+#Group the data by userid
+grouped = data.groupby('userid')
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -51,7 +53,24 @@ assert len(grouped.groups) == data["userid"].nunique(), "Number of groups should
 # YOUR CODE HERE 4 to set movements
 import pandas as pd
 from shapely.geometry import LineString, Point
-movements=None
+
+#Create an empty DataFrame called movements. #Create an empty column "geometry"
+movements = pd.DataFrame({'geometry':[]})
+
+for i, row in grouped:
+
+
+# create a LineString object based on the user's points
+# for i, row in data.iterrows():
+#   # sort the rows by timestamp
+#   data = data.sort_values('timestamp')
+#   line = (LineString(row["lat"], row["lon"]))
+#   movements.at[i, 'userid'] = i
+#   movements.at[i, 'geometry'] = line
+
+
+# Add the LineString to the geometry column of the movements dataframe. You can also add the userid in a separate column (or use the userid as index).
+
 # CODE FOR TESTING YOUR SOLUTION
 
 #Check the result
