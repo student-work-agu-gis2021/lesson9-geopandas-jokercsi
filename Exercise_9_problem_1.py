@@ -79,7 +79,8 @@ print(len(geo))
 # Plot the polygon. What shape is it :) ?
 # YOUR CODE HERE 4
 geo.plot()
-#plt.show()
+plt.show()
+plt.close()
 
 # What can you see on the map? :) 
 
