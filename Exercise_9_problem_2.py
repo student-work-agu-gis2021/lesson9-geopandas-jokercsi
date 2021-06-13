@@ -11,10 +11,23 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
 # YOUR CODE HERE 1 to read data
-data = None
+fp = 'data/some_posts.csv'
 
+#Read the data from data/some_posts.csv into a Pandas dataframe called data
+data = pd.read_csv(fp, sep=',')
+
+#Create an empty column called geometry where you will store shapely Point objects
+data["geometry"]=""
+
+#Insert Point objects into the column geometry based on the coordinate columns
+for i, row in data.iterrows():
+  point = Point(row["lat"], row["lon"])
+  data.at[i, "geometry"] = point 
+
+#data['geometry'] = Point(data["lat"], data["lon"])
 
 # CODE FOR TESTING YOUR SOLUTION
+
 
 # Check the result
 print("Number of rows:", len(data))
