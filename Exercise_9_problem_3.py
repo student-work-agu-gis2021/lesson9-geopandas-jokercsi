@@ -57,7 +57,8 @@ from shapely.geometry import LineString, Point
 #Create an empty DataFrame called movements. #Create an empty column "geometry"
 movements = pd.DataFrame({'geometry':[]})
 
-for i, row in grouped:
+#for i, row in grouped:
+  
 
 
 # create a LineString object based on the user's points
